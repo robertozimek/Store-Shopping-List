@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <EditText
+    android:id="@+id/edittext_storename"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/edittext_margin"
+    android:inputType="textCapWords"
+    android:hint="@string/storename_hint"/>
+
+    <EditText
+        android:id="@+id/edittext_street"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/edittext_margin"
+        android:inputType="textPostalAddress"
+        android:hint="@string/street_hint"/>
+
+    <EditText
+        android:id="@+id/edittext_city"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/edittext_margin"
+        android:inputType="textPostalAddress"
+        android:hint="@string/city_hint"/>
+
+    <EditText
+        android:id="@+id/state_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/edittext_margin"
+        android:inputType="textPostalAddress"
+        android:hint="@string/state_hint"/>
+
+    <Button
+        android:id="@+id/button_addstore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/button_margin"
+        android:text="@string/addstore_text"/>
+
+</LinearLayout>
