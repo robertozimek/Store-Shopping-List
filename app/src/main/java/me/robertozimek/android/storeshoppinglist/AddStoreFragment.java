@@ -61,6 +61,16 @@ public class AddStoreFragment extends Fragment {
         addStoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Create store object with EditText values
+                Store store = new Store(storeName.getText().toString(),
+                        street.getText().toString(),
+                        city.getText().toString(),
+                        state.getText().toString());
+
+                if (!store.getStoreName().isEmpty() && StoreUtil.addStore(store, v.getContext())) {
+                    // If successfully added, return to stores list fragment
+                    activity.onBackPressed();
+                }
 
             }
         });
