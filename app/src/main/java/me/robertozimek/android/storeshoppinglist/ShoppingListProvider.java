@@ -15,7 +15,7 @@ import android.text.TextUtils;
 
 public class ShoppingListProvider extends ContentProvider {
     // DECLARING URIs
-    private static final String PROVIDER_NAME = "me.robertozimek.android.storeshoppinglist.ShoppingListProvider";
+    public static final String PROVIDER_NAME = "robertozimek.android.storeshoppinglist.ShoppingListProvider";
     public static final String PATH_STORE = "stores";
     public static final String PATH_ITEMLIST = "itemlist";
     public static final Uri CONTENT_URI_STORE = Uri.parse("content://" + PROVIDER_NAME + "/" + PATH_STORE);

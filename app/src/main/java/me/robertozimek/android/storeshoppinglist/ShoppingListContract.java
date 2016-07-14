@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.provider.BaseColumns;
 
 public class ShoppingListContract {
+    public static final String AUTHORITY = ShoppingListProvider.PROVIDER_NAME;
     public static final String PATH_STORE = ShoppingListProvider.PATH_STORE;
     public static final String PATH_ITEMLIST = ShoppingListProvider.PATH_ITEMLIST;
 
