@@ -58,7 +58,11 @@ public class StoreUtil {
 
     // Adds store to database
     public static boolean addStore(Store store, Context context) {
-        Uri returnedURI = null;
+        boolean foundLocationSuccessly = store.retrieveCoordinates();
+
+        if(!foundLocationSuccessly) {
+            return false;
+        }
 
         // Set content values for each column
         ContentValues values = new ContentValues();
@@ -66,27 +70,17 @@ public class StoreUtil {
         values.put(ShoppingListContract.StoreEntry.STREET, store.getStreetAddress().toUpperCase().replaceAll("[.]", ""));
         values.put(ShoppingListContract.StoreEntry.CITY, store.getCityAddress().toUpperCase());
         values.put(ShoppingListContract.StoreEntry.STATE, store.getStateAddress().toUpperCase());
-
-        /**************************************************
-         * REMINDER!!!!!!!                                *
-         * -----------------------------------------------*
-         * MUST CHANGE NEXT 2 LINES AFTER ADDING GEOCODER *
-         **************************************************/
-        values.put(ShoppingListContract.StoreEntry.LATITUDE, 0);
-        values.put(ShoppingListContract.StoreEntry.LONGITUDE, 0);
+        values.put(ShoppingListContract.StoreEntry.LATITUDE, store.getLatitude());
+        values.put(ShoppingListContract.StoreEntry.LONGITUDE, store.getLongitude());
 
 
         // Gets CONTENT URI from contract class
         Uri CONTENT_URI = ShoppingListContract.StoreEntry.CONTENT_URI;
 
         // Inserts record
-        returnedURI = context.getContentResolver().insert(CONTENT_URI, values);
+        context.getContentResolver().insert(CONTENT_URI, values);
 
-        // Determine if store insertion was successful
-        if (returnedURI != null)
-            return true;
-        else
-            return false;
+        return foundLocationSuccessly;
     }
 
     public static boolean removeStore(Context context, Store store) {

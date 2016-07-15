@@ -1,5 +1,10 @@
 package me.robertozimek.android.storeshoppinglist;
 
+import com.google.android.gms.maps.model.LatLng;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
+
 /**
  * Store Class
  *  object contains store name, street address, city, state
@@ -15,6 +20,8 @@ public class Store {
     private String stateAddress;
 
     private int shoppingItemsCount;
+
+    private LatLng coordinates;
 
     // Constructor that takes store's name and street, city, state address
     public Store(String storeName, String streetAddress, String cityAddress, String stateAddress) {
@@ -56,5 +63,24 @@ public class Store {
     // shoppingItemsCount
     public int getShoppingItemsCount() { return shoppingItemsCount; }
     public void setShoppingItemsCount(int shoppingItemsCount) { this.shoppingItemsCount = shoppingItemsCount; }
+
+    // get latitude and longitude
+    public double getLatitude() { return coordinates.latitude; }
+    public double getLongitude() { return coordinates.longitude; }
+
+    // get coordinates
+    public boolean retrieveCoordinates() {
+        boolean success = true;
+        try {
+            coordinates = new GeocoderAsyncTask().execute(streetAddress, cityAddress, stateAddress).get();
+        } catch(ExecutionException e) {
+            e.printStackTrace();
+            success = false;
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            success = false;
+        }
+        return  success;
+    }
 
 }
