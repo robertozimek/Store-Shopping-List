@@ -1,6 +1,10 @@
 package me.robertozimek.android.storeshoppinglist;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -67,9 +71,45 @@ public class AddStoreFragment extends Fragment {
                         city.getText().toString(),
                         state.getText().toString());
 
-                if (!store.getStoreName().isEmpty() && StoreUtil.addStore(store, v.getContext())) {
-                    // If successfully added, return to stores list fragment
-                    activity.onBackPressed();
+                // Creates ConnectivityManager
+                ConnectivityManager cmanager = (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
+                NetworkInfo networkInfoObj = cmanager.getActiveNetworkInfo();
+
+
+                // Ensures there is internet connectivity before attempting to add store and retrieve GPS coordinates
+                if(networkInfoObj != null && networkInfoObj.isConnected()) {
+                    // Add to database
+                    if (StoreUtil.addStore(store, v.getContext()) && !store.getStoreName().isEmpty()) {
+                        // If successfully added, return to stores fragment
+                        activity.onBackPressed();
+                    } else {
+                        // Alerts user why data couldn't be added
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle("Unable to add");
+                        builder.setMessage("Store isn't able to be located. Please enter a correct address.");
+                        builder.setCancelable(false);
+                        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // Wait until clicked
+                            }
+                        });
+
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    }
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Unable to add");
+                    builder.setMessage("Wi-Fi or Cellular internet connection required.");
+                    builder.setCancelable(false);
+                    builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // Wait until clicked
+                        }
+                    });
+
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
                 }
 
             }
