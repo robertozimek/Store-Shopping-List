@@ -8,5 +8,6 @@
     <string name="state_hint">State</string>
     <string name="addstore_text">Add Store</string>
     <string name="actionbar_stores">Store Shopping Lists</string>
-
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
 </resources>
