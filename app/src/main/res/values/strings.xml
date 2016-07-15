@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Store Shopping List</string>
     <string name="action_add_store">Add Store</string>
+    <string name="action_add_item">Add Item</string>
     <string name="ok">OK</string>
     <string name="storename_hint">Store Name</string>
     <string name="street_hint">Street Address</string>
@@ -10,4 +11,5 @@
     <string name="actionbar_stores">Store Shopping Lists</string>
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
+    <string name="actionbar_itemlist">Shopping List</string>
 </resources>

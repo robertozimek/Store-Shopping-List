@@ -15,7 +15,7 @@ import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements StoreListFragment.OnStoreFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements StoreListFragment.OnStoreFragmentInteractionListener, ShoppingListFragment.OnShoppingListFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,6 +114,33 @@ public class MainActivity extends AppCompatActivity implements StoreListFragment
 
     @Override
     public void onStoreFragmentInteraction(Store store) {
+        // Creates bundle with store id
+        Bundle bundle = new Bundle();
+        bundle.putInt("store_id", store.getStoreID());
+
+        // Initializes fragment
+        Fragment shoppingListFragment = new ShoppingListFragment();
+
+        // Adds bundle
+        shoppingListFragment.setArguments(bundle);
+
+        // Opens fragment
+        transitionToFragment(shoppingListFragment);
+    }
+
+    // Listener method from the ShoppingListFragment class for handling RecyclerView clicks
+    @Override
+    public void onShoppingItemFragmentInteraction(ShoppingItem item) {
+
+    }
+
+    @Override
+    public void openAddItemFragment(boolean updateItem, int storeID) {
+
+    }
+
+    @Override
+    public void openUpdateItemFragment(ShoppingItem item) {
 
     }
 }
