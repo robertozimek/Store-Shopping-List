@@ -70,7 +70,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
     }
 
     public void deleteStore(Store store, int position) {
-        if(StoreUtil.removeStore(mContext, store)) {
+        if(StoreUtil.removeStore(store, mContext)) {
             mStoreList.remove(position);
             notifyItemRemoved(position);
             notifyItemRangeChanged(position, getItemCount());

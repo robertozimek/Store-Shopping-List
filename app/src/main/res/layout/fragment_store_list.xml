@@ -1,6 +1,6 @@
 <android.support.v7.widget.RecyclerView
     android:id="@+id/storelist"
-    android:name="me.robertozimek.android.geo_shoppinglist.StoreListFragment"
+    android:name="me.robertozimek.android.storeshoppinglist.StoreListFragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"

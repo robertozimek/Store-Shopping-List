@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -14,6 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements StoreListFragment.OnStoreFragmentInteractionListener, ShoppingListFragment.OnShoppingListFragmentInteractionListener {
 
@@ -136,11 +139,32 @@ public class MainActivity extends AppCompatActivity implements StoreListFragment
 
     @Override
     public void openAddItemFragment(boolean updateItem, int storeID) {
+        // Creates bundle with store id
+        Bundle bundle = new Bundle();
+        bundle.putInt("store_id", storeID);
 
+        Fragment addUpdateItemFragment = new AddOrUpdateItemFragment();
+
+        // Adds bundle arguments
+        addUpdateItemFragment.setArguments(bundle);
+
+        // Opens fragment
+        transitionToFragment(addUpdateItemFragment);
     }
 
     @Override
     public void openUpdateItemFragment(ShoppingItem item) {
+        // Creates bundle with store id
+        Bundle bundle = new Bundle();
+        bundle.putInt("store_id", item.getStoreID());
+        bundle.putInt("item_id", item.getItemID());
 
+        Fragment addUpdateItemFragment = new AddOrUpdateItemFragment();
+
+        // Adds bundle arguments
+        addUpdateItemFragment.setArguments(bundle);
+
+        // Opens fragment
+        transitionToFragment(addUpdateItemFragment);
     }
 }

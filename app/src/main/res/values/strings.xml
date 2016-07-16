@@ -12,4 +12,9 @@
     <string name="yes">Yes</string>
     <string name="cancel">Cancel</string>
     <string name="actionbar_itemlist">Shopping List</string>
+    <string name="itemname_hint">Item Name</string>
+    <string name="additem_button">Add Item</string>
+    <string name="updateitem_button">Update Item</string>
+    <string name="actionbar_additem">Add Item</string>
+    <string name="actionbar_updateitem">Update Item</string>
 </resources>

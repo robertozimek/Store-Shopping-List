@@ -83,7 +83,7 @@ public class StoreUtil {
         return foundLocationSuccessly;
     }
 
-    public static boolean removeStore(Context context, Store store) {
+    public static boolean removeStore(Store store, Context context) {
         // Builds CONTENT URI with storeID
         Uri CONTENT_URI = ShoppingListContract.StoreEntry.getStoreUriWithID(store.getStoreID());
 
