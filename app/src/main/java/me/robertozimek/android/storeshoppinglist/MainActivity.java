@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.SupportMapFragment;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements StoreListFragment.OnStoreFragmentInteractionListener, ShoppingListFragment.OnShoppingListFragmentInteractionListener {
@@ -108,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements StoreListFragment
                 // replaces current fragment with add store fragment
                 Fragment addToStoreFragment = new AddStoreFragment();
                 transitionToFragment(addToStoreFragment);
+                break;
+            case R.id.action_map:
                 break;
         }
 

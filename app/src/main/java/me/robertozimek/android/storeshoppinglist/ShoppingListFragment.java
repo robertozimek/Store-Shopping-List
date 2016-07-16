@@ -43,6 +43,7 @@ public class ShoppingListFragment extends Fragment {
         inflater.inflate(R.menu.menu_item, menu);
         if(menu != null) {
             menu.removeItem(R.id.action_add_store);
+            menu.removeItem(R.id.action_map);
         }
 
         // Retrieves the plus sign icon from the menu and applies a tint of white

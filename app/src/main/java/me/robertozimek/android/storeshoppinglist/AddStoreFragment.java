@@ -121,6 +121,7 @@ public class AddStoreFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         if(menu != null) {
             menu.removeItem(R.id.action_add_store);
+            menu.removeItem(R.id.action_map);
         }
         super.onCreateOptionsMenu(menu, inflater);
     }
