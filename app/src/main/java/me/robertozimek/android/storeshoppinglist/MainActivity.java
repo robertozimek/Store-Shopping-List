@@ -134,7 +134,18 @@ public class MainActivity extends AppCompatActivity implements StoreListFragment
     // Listener method from the ShoppingListFragment class for handling RecyclerView clicks
     @Override
     public void onShoppingItemFragmentInteraction(ShoppingItem item) {
+        // Creates bundle with store id
+        Bundle bundle = new Bundle();
+        bundle.putInt("store_id", item.getStoreID());
+        bundle.putInt("item_id", item.getItemID());
 
+        Fragment displayItemFragment = new DisplayItemFragment();
+
+        // Adds bundle arguments
+        displayItemFragment.setArguments(bundle);
+
+        // Opens fragment
+        transitionToFragment(displayItemFragment);
     }
 
     @Override

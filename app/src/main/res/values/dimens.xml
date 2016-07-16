@@ -5,6 +5,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">0dp</dimen>
     <dimen name="edittext_margin">16dp</dimen>
+    <dimen name="item_text_margin">5dp</dimen>
     <dimen name="button_margin">16dp</dimen>
     <dimen name="address_left_margin">20dp</dimen>
     <dimen name="address_top_margin">5dp</dimen>
