@@ -46,6 +46,12 @@ public class StoreUtil {
                 // Add ID
                 mStore.setStoreID(storesCursor.getInt(0));
 
+                // Add coordinate
+                mStore.setCoordinates(storesCursor.getDouble(5), storesCursor.getDouble(6));
+
+                // Retrieve number of items in shopping list
+                mStore.setShoppingItemsCount(ShoppingItemUtil.getItemCount(mStore.getStoreID(), context));
+
                 // Add to list
                 stores.add(mStore);
             }

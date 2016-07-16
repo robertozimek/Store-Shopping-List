@@ -53,6 +53,33 @@ public class ShoppingItemUtil {
         return items;
     }
 
+    public static int getItemCount(int storeID, Context context) {
+        int itemCount = 0;
+
+        // Retrieves CONTENT URI for shopping list items
+        Uri CONTENT_URI = ShoppingListContract.ItemEntry.CONTENT_URI;
+
+        // Selects columns in query
+        String[] columns = {"count(" + ShoppingListContract.ItemEntry.ID_ITEM + ") AS COUNT"};
+
+        // Where condition of query
+        String where = ShoppingListContract.ItemEntry.ITEM_STORE_ID + "=?";
+
+        // Arguments for where condition
+        String[] args = {String.valueOf(storeID)};
+
+        // Retrieve reference to records
+        Cursor itemCursor = context.getContentResolver().query(CONTENT_URI,columns, where, args, null);
+
+        // Checks if cursor exists and retrieve count from cursor
+        if(itemCursor != null && itemCursor.moveToFirst()) {
+            itemCount = itemCursor.getInt(0);
+            itemCursor.close();
+        }
+
+        return itemCount;
+    }
+
     public static boolean removeItem(ShoppingItem item, Context context) {
         // Builds CONTENT URI with storeID
         Uri CONTENT_URI = ShoppingListContract.ItemEntry.getItemListUriWithID(item.getItemID());

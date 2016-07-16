@@ -20,7 +20,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements StoreListFragment.OnStoreFragmentInteractionListener, ShoppingListFragment.OnShoppingListFragmentInteractionListener {
+public class MainActivity extends AppCompatActivity implements StoreListFragment.OnStoreFragmentInteractionListener,
+        ShoppingListFragment.OnShoppingListFragmentInteractionListener,
+        MapsFragment.OnMapFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +114,9 @@ public class MainActivity extends AppCompatActivity implements StoreListFragment
                 transitionToFragment(addToStoreFragment);
                 break;
             case R.id.action_map:
+                // intent to open MapActivity
+                SupportMapFragment mapFragment = new MapsFragment();
+                transitionToFragment(mapFragment);
                 break;
         }
 
@@ -181,5 +186,21 @@ public class MainActivity extends AppCompatActivity implements StoreListFragment
 
         // Opens fragment
         transitionToFragment(addUpdateItemFragment);
+    }
+
+    @Override
+    public void onMapFragmentInteraction(Store store) {
+        // Creates bundle with store id
+        Bundle bundle = new Bundle();
+        bundle.putInt("store_id", store.getStoreID());
+
+        // Initializes fragment
+        Fragment shoppingListFragment = new ShoppingListFragment();
+
+        // Adds bundle
+        shoppingListFragment.setArguments(bundle);
+
+        // Opens fragment
+        transitionToFragment(shoppingListFragment);
     }
 }

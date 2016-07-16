@@ -67,6 +67,7 @@ public class Store {
     // get latitude and longitude
     public double getLatitude() { return coordinates.latitude; }
     public double getLongitude() { return coordinates.longitude; }
+    public LatLng getCoordinates() { return coordinates; }
 
     // get coordinates
     public boolean retrieveCoordinates() {
@@ -81,6 +82,10 @@ public class Store {
             success = false;
         }
         return  success;
+    }
+
+    public void setCoordinates(double lat, double lng) {
+        coordinates = new LatLng(lat,lng);
     }
 
 }
